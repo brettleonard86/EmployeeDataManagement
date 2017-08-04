@@ -22,25 +22,35 @@ $("#run-submit").click(function() {
   role = $("#role").val().trim();
   startDate = $("#start-date").val().trim();
   monthlyRate = $("#monthly-rate").val().trim();
+  var monthsWorked = Math.floor(moment().diff(moment(startDate), 'months', true))
   database.ref().push({
     name: employeeName,
     role: role,
     startDate: startDate,
     monthlyRate: monthlyRate,
   })
+
   var user = {
     name: employeeName,
     role: role,
     startDate: startDate,
+    monthsWorked: monthsWorked,
     monthlyRate: monthlyRate,
+    totalBilled: monthsWorked * monthlyRate
   }
-  console.log(user)
+
+  console.log(user.totalBilled)
+  //console.log(user)
 })
-    database.ref().on("child_added", function(childSnapshot) {
+  database.ref().on("child_added", function(childSnapshot) {
 
       // Log everything that's coming out of snapshot
       console.log(childSnapshot.val().name);
-      $("#employee-table > tbody").append("<tr><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().role + "</td><td>" + childSnapshot.val().starDate + "</td><td>" + 0 + "</td><td>" + childSnapshot.val().monthlyRate + "</td><td>" + 0 + "</td></tr>");
+      var startDate = childSnapshot.val().startDate;
+      var monthlyRate = childSnapshot.val().monthlyRate;
+      var monthsWorked = Math.floor(moment().diff(moment(startDate), 'months', true))
+      var totalBilled = monthsWorked * monthlyRate;
+      $("#employee-table > tbody").append("<tr><td>" + childSnapshot.val().name + "</td><td>" + childSnapshot.val().role + "</td><td>" + childSnapshot.val().startDate + "</td><td>" + monthsWorked + "</td><td>" + childSnapshot.val().monthlyRate + "</td><td>" + totalBilled + "</td></tr>");
 
     }, function(errorObject) {
       console.log("Errors handled: " + errorObject.code);
