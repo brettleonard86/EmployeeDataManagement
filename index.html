@@ -10,6 +10,7 @@
   <!-- Font Awesome CSS Icons (For cool glyphicons) -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
+
   <!-- Style to fix the issue of text extending past panel length -->
   <style>
     .panel-body a {
@@ -24,7 +25,7 @@
   <div class="container">
 
     <!-- Jumbotron for Title -->
-    <div class="jumbotron" style="background-color: #20315A ; color: white;">
+    <div class="jumbotron">
       <h1 class="text-center"><strong> Employee Data Management</strong></h1>
       <h3 class="text-center"><strong> A Comprehensive Directory of Employee Bilable Hours</strong></h3>
     </div>
@@ -43,6 +44,18 @@
           </div>
 
           <!-- This main panel will hold each of the resulting articles -->
+<<<<<<< HEAD
+          <div class="panel-body" id="well-section">
+            <table class="table table-hover" id="employee-table">
+              <thead>
+                <tr>
+                  <th>Employee Name</th>
+                  <th>Role</th>
+                  <th>Start Date</th>
+                  <th>Months Worked</th>
+                  <th>Monthly Rate ($)</th>
+                  <th>Total Billed ($)</th>
+=======
           <div class="panel-body">
             <table class="table table-hover" id="employee-table">
               <thead>
@@ -53,6 +66,7 @@
                   <th id="months-worked-row">Months Worked</th>
                   <th id="monthly-rate-row">Monthly Rate ($)</th>
                   <th id="total-billed-row">Total Billed ($)</th>
+>>>>>>> 9a28505a2cc9cf8442ad887b156d0e421059c492
                 </tr>
               </thead>
               <tbody>
@@ -125,9 +139,10 @@
 
   <!-- jQuery JS -->
   <script src="https://code.jquery.com/jquery.js"></script>
-
+  <script src="https://www.gstatic.com/firebasejs/4.2.0/firebase.js"></script>
   <!-- Code to the JavaScript File -->
   <script src="javascript.js"></script>
+
 
 </body>
 
